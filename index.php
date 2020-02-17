@@ -2,7 +2,10 @@
 require_once('database.php');
 
 
-$query = '';// PUT YOUR SQL QUERY HERE
+$query = 'SELECT C.customerID, C.emailAddress, C.firstName, C.lastName, A.line1, A.city, A.state, A.zipCode, A.phone
+FROM `customers` C INNER JOIN addresses A
+ON C.customerID = A.customerID 
+GROUP BY C.customerID, C.emailAddress, C.firstName, C.lastName, A.line1, A.city, A.state, A.zipCode, A.phone;';// PUT YOUR SQL QUERY HERE
 // Example: $query = 'SELECT * FROM customers';
 
 $statement = $db->prepare($query);
